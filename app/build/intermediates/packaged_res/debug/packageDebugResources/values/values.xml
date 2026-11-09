@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#121212</color>
+    <color name="card_background">#282828</color>
+    <color name="control_active">#1DB954</color>
+    <color name="control_inactive">#8E8E93</color>
+    <color name="divider">#2A2A2A</color>
+    <color name="favorite_active">#FF4655</color>
+    <color name="mini_player_bg">#202020</color>
+    <color name="on_primary">#000000</color>
+    <color name="player_bottom_sheet_bg">#1A1A1A</color>
+    <color name="primary">#1DB954</color>
+    <color name="primary_variant">#169C46</color>
+    <color name="ripple_color">#26FFFFFF</color>
+    <color name="surface">#181818</color>
+    <color name="surface_variant">#242424</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B3B3B3</color>
+    <color name="text_tertiary">#7A7A7A</color>
+    <string name="added_to_favorites">Đã thêm vào danh sách yêu thích</string>
+    <string name="app_name">MusicForMe</string>
+    <string name="download_button">Tải về</string>
+    <string name="download_completed">Đã tải xong bài hát vào máy!</string>
+    <string name="download_started">Bắt đầu tải bài hát...</string>
+    <string name="empty_favorites">Chưa có bài hát yêu thích nào.</string>
+    <string name="empty_local_music">Không tìm thấy bài hát nào trong máy.\nHãy chép nhạc vào thư mục Music hoặc Download.</string>
+    <string name="empty_online_music">Đang tải danh sách nhạc online...</string>
+    <string name="grant_permission">Cấp quyền ngay</string>
+    <string name="now_playing">Đang phát</string>
+    <string name="permission_required_desc">Ứng dụng cần quyền đọc bộ nhớ để quét các bài hát có sẵn trên điện thoại của bạn.</string>
+    <string name="permission_required_title">Cấp quyền truy cập bộ nhớ</string>
+    <string name="removed_from_favorites">Đã xóa khỏi danh sách yêu thích</string>
+    <string name="search_hint">Tìm kiếm bài hát, ca sĩ...</string>
+    <string name="tab_favorites">Yêu thích</string>
+    <string name="tab_library">Thư viện</string>
+    <string name="tab_online">Khám phá</string>
+    <string name="unknown_artist">Nghệ sĩ chưa rõ</string>
+    <string name="unknown_song">Bài hát chưa rõ</string>
+    <style name="Theme.MusicForMe" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="colorSurface">@color/surface</item>
+    </style>
+</resources>

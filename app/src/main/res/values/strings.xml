@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">MusicForMe</string>
+    <string name="tab_library">Thư viện</string>
+    <string name="tab_online">Khám phá</string>
+    <string name="tab_favorites">Yêu thích</string>
+
+    <string name="search_hint">Tìm kiếm bài hát, ca sĩ...</string>
+    <string name="empty_local_music">Không tìm thấy bài hát nào trong máy.\nHãy chép nhạc vào thư mục Music hoặc Download.</string>
+    <string name="empty_favorites">Chưa có bài hát yêu thích nào.</string>
+    <string name="empty_online_music">Đang tải danh sách nhạc online...</string>
+
+    <string name="permission_required_title">Cấp quyền truy cập bộ nhớ</string>
+    <string name="permission_required_desc">Ứng dụng cần quyền đọc bộ nhớ để quét các bài hát có sẵn trên điện thoại của bạn.</string>
+    <string name="grant_permission">Cấp quyền ngay</string>
+
+    <string name="download_started">Bắt đầu tải bài hát...</string>
+    <string name="download_completed">Đã tải xong bài hát vào máy!</string>
+    <string name="now_playing">Đang phát</string>
+    <string name="unknown_artist">Nghệ sĩ chưa rõ</string>
+    <string name="unknown_song">Bài hát chưa rõ</string>
+
+    <string name="download_button">Tải về</string>
+    <string name="added_to_favorites">Đã thêm vào danh sách yêu thích</string>
+    <string name="removed_from_favorites">Đã xóa khỏi danh sách yêu thích</string>
+</resources>

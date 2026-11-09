@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand & Accent (Spotify Green) -->
+    <color name="primary">#1DB954</color>
+    <color name="primary_variant">#169C46</color>
+    <color name="on_primary">#000000</color>
+
+    <!-- Backgrounds (Amoled Dark) -->
+    <color name="background">#121212</color>
+    <color name="surface">#181818</color>
+    <color name="surface_variant">#242424</color>
+    <color name="card_background">#282828</color>
+
+    <!-- Mini player & Dialogs -->
+    <color name="mini_player_bg">#202020</color>
+    <color name="player_bottom_sheet_bg">#1A1A1A</color>
+
+    <!-- Typography -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B3B3B3</color>
+    <color name="text_tertiary">#7A7A7A</color>
+
+    <!-- Controls -->
+    <color name="favorite_active">#FF4655</color>
+    <color name="control_inactive">#8E8E93</color>
+    <color name="control_active">#1DB954</color>
+    <color name="divider">#2A2A2A</color>
+    <color name="ripple_color">#26FFFFFF</color>
+</resources>

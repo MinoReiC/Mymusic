@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "com.musicforme.app-mergeDebugResources-48:/layout/activity_main.xml",
+        "source": "com.musicforme.app-main-51:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.musicforme.app-mergeDebugResources-48:/layout/item_song.xml",
+        "source": "com.musicforme.app-main-51:/layout/item_song.xml"
+    },
+    {
+        "merged": "com.musicforme.app-mergeDebugResources-48:/layout/fragment_online.xml",
+        "source": "com.musicforme.app-main-51:/layout/fragment_online.xml"
+    },
+    {
+        "merged": "com.musicforme.app-mergeDebugResources-48:/layout/activity_player.xml",
+        "source": "com.musicforme.app-main-51:/layout/activity_player.xml"
+    },
+    {
+        "merged": "com.musicforme.app-mergeDebugResources-48:/layout/fragment_favorites.xml",
+        "source": "com.musicforme.app-main-51:/layout/fragment_favorites.xml"
+    },
+    {
+        "merged": "com.musicforme.app-mergeDebugResources-48:/layout/fragment_library.xml",
+        "source": "com.musicforme.app-main-51:/layout/fragment_library.xml"
+    }
+]
