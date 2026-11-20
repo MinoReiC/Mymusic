@@ -5,6 +5,7 @@ import com.musicforme.app.data.local.FavoriteEntity
 import com.musicforme.app.data.local.MediaStoreScanner
 import com.musicforme.app.data.model.Song
 import com.musicforme.app.data.remote.MusicApiClient
+import com.musicforme.app.data.remote.YouTubeMusicExtractor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -23,16 +24,19 @@ class MusicRepository(
         }
     }
 
-    suspend fun searchOnlineSongs(query: String = "top hits"): List<Song> = withContext(Dispatchers.IO) {
-        val term = query.trim().ifBlank { "top hits" }
+    suspend fun searchOnlineSongs(query: String = ""): List<Song> = withContext(Dispatchers.IO) {
+        val term = query.trim().ifBlank { "nhạc trẻ hot nhất hiện nay" }
         val songs = try {
-            val response = MusicApiClient.service.searchSongs(term = term, limit = 40)
-            response.results
-                .filter { !it.previewUrl.isNullOrBlank() }
-                .map { it.toSong() }
+            val ytSongs = YouTubeMusicExtractor.searchSongs(term)
+            if (ytSongs.isNotEmpty()) {
+                ytSongs
+            } else {
+                // Fallback to sample list if search returns empty
+                MusicApiClient.getSampleOnlineSongs()
+            }
         } catch (e: Exception) {
             e.printStackTrace()
-            // Fallback to sample streaming list when remote server is offline or fails
+            // Fallback to sample streaming list when network fails
             MusicApiClient.getSampleOnlineSongs()
         }
 

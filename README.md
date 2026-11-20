@@ -29,7 +29,7 @@
 * 📦 **Quản lý Kho nhạc & Yêu thích (Room Database)**:
   * Đánh dấu bài hát yêu thích (Favorite) lưu bền vững vào SQLite Room.
   * Tab "Yêu thích" phân loại riêng các bài bạn nghe thường xuyên nhất.
-* 🔎 **Tìm kiếm Trực tuyến Toàn cầu (Online Music Search API)**: Tìm kiếm tức thì hàng triệu bài hát quốc tế và Việt Nam (Sơn Tùng, Đen Vâu, Taylor Swift, v.v.) qua Apple/iTunes Search API, hỗ trợ nghe trực tiếp và tải về máy.
+* 🔎 **Trích xuất Audio Full từ YouTube Music (Native InnerTube Extractor)**: Tìm kiếm tức thì hàng triệu bài hát Full 100% (V-Pop, US-UK, K-Pop, Remix, Lofi...) trực tiếp từ YouTube Music, tự động giải mã luồng âm thanh M4A/AAC chất lượng cao qua Media3 `ResolvingDataSource` và hỗ trợ tải bản Full về máy chỉ bằng 1 chạm.
 * 🔎 **Tìm kiếm tức thì Thư viện (Instant Local Search)**: Lọc bài hát theo tên bài, nghệ sĩ hoặc album trong thời gian thực.
 * 📥 **Tải nhạc ngầm (Android DownloadManager)**: Tải bài hát trực tiếp vào thư mục `Music/MusicForMe` với thanh tiến trình hệ thống.
 
