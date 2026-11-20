@@ -1,11 +1,14 @@
 package com.musicforme.app.ui
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -58,19 +61,23 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupNavigation() {
         // Default to Library fragment
+        viewModel.currentTab.value = 0
         replaceFragment(libraryFragment)
 
         binding.bottomNav.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_library -> {
+                    viewModel.currentTab.value = 0
                     replaceFragment(libraryFragment)
                     true
                 }
                 R.id.nav_online -> {
+                    viewModel.currentTab.value = 1
                     replaceFragment(onlineFragment)
                     true
                 }
                 R.id.nav_favorites -> {
+                    viewModel.currentTab.value = 2
                     replaceFragment(favoritesFragment)
                     true
                 }
@@ -88,6 +95,20 @@ class MainActivity : AppCompatActivity() {
     private fun setupSearch() {
         binding.etSearch.doAfterTextChanged { text ->
             viewModel.searchQuery.value = text?.toString().orEmpty()
+        }
+
+        binding.etSearch.setOnEditorActionListener { v, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                if (viewModel.currentTab.value == 1) {
+                    viewModel.searchOnline(v.text?.toString().orEmpty())
+                }
+                v.clearFocus()
+                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+                imm?.hideSoftInputFromWindow(v.windowToken, 0)
+                true
+            } else {
+                false
+            }
         }
     }
 

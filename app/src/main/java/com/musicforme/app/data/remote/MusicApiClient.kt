@@ -8,8 +8,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object MusicApiClient {
-    // Configurable base URL (e.g., your own Supabase, Firebase, or GitHub Pages raw URL)
-    private const val BASE_URL = "https://raw.githubusercontent.com/musicforme/catalog/main/"
+    // Official iTunes / Apple Music Search API (free, worldwide, no API key needed)
+    private const val BASE_URL = "https://itunes.apple.com/"
 
     private val okHttpClient by lazy {
         val logging = HttpLoggingInterceptor().apply {
@@ -35,8 +35,7 @@ object MusicApiClient {
     }
 
     /**
-     * Curated high quality sample online songs with verified public stream URLs.
-     * Guaranteed to work immediately when opening Android Studio emulator or real phone!
+     * Fallback offline sample songs if network is unavailable.
      */
     fun getSampleOnlineSongs(): List<Song> {
         return listOf(

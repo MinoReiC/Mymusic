@@ -23,12 +23,16 @@ class MusicRepository(
         }
     }
 
-    suspend fun getOnlineSongs(): List<Song> = withContext(Dispatchers.IO) {
+    suspend fun searchOnlineSongs(query: String = "top hits"): List<Song> = withContext(Dispatchers.IO) {
+        val term = query.trim().ifBlank { "top hits" }
         val songs = try {
-            val response = MusicApiClient.service.getTrendingSongs()
-            response.map { it.toSong() }
+            val response = MusicApiClient.service.searchSongs(term = term, limit = 40)
+            response.results
+                .filter { !it.previewUrl.isNullOrBlank() }
+                .map { it.toSong() }
         } catch (e: Exception) {
-            // Fallback to sample streaming list when remote server is offline
+            e.printStackTrace()
+            // Fallback to sample streaming list when remote server is offline or fails
             MusicApiClient.getSampleOnlineSongs()
         }
 

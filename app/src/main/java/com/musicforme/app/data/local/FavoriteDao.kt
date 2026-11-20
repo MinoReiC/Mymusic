@@ -19,11 +19,11 @@ interface FavoriteDao {
     suspend fun isFavoriteDirect(songId: String): Boolean
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertFavorite(favorite: FavoriteEntity)
+    suspend fun insertFavorite(favorite: FavoriteEntity): Long
 
     @Delete
-    suspend fun deleteFavorite(favorite: FavoriteEntity)
+    suspend fun deleteFavorite(favorite: FavoriteEntity): Int
 
     @Query("DELETE FROM favorites WHERE id = :songId")
-    suspend fun deleteFavoriteById(songId: String)
+    suspend fun deleteFavoriteById(songId: String): Int
 }

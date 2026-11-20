@@ -4,15 +4,20 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.musicforme.app.data.model.Song
 import com.musicforme.app.data.repository.MusicRepository
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository: MusicRepository) : ViewModel() {
+
+    val currentTab = MutableStateFlow(0) // 0: Library, 1: Online, 2: Favorites
 
     private val _localSongs = MutableStateFlow<List<Song>>(emptyList())
     val localSongs: StateFlow<List<Song>> = _localSongs.asStateFlow()
@@ -32,13 +37,25 @@ class MainViewModel(private val repository: MusicRepository) : ViewModel() {
         filterSongs(songs, query)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
-    val filteredOnlineSongs: StateFlow<List<Song>> = combine(_onlineSongs, searchQuery) { songs, query ->
-        filterSongs(songs, query)
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
-
     val filteredFavoriteSongs: StateFlow<List<Song>> = combine(favoriteSongs, searchQuery) { songs, query ->
         filterSongs(songs, query)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+
+    private var onlineSearchJob: Job? = null
+
+    init {
+        // Live search for Online tab with 500ms debounce
+        viewModelScope.launch {
+            searchQuery
+                .debounce(500)
+                .distinctUntilChanged()
+                .collect { query ->
+                    if (currentTab.value == 1) {
+                        searchOnline(query)
+                    }
+                }
+        }
+    }
 
     private fun filterSongs(songs: List<Song>, query: String): List<Song> {
         if (query.isBlank()) return songs
@@ -57,11 +74,12 @@ class MainViewModel(private val repository: MusicRepository) : ViewModel() {
         }
     }
 
-    fun loadOnlineSongs() {
-        viewModelScope.launch {
+    fun searchOnline(query: String = "") {
+        onlineSearchJob?.cancel()
+        onlineSearchJob = viewModelScope.launch {
             _isLoadingOnline.value = true
-            val songs = repository.getOnlineSongs()
-            _onlineSongs.value = songs
+            val results = repository.searchOnlineSongs(query)
+            _onlineSongs.value = results
             _isLoadingOnline.value = false
         }
     }

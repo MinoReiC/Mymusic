@@ -7,7 +7,7 @@
     <string name="search_hint">Tìm kiếm bài hát, ca sĩ...</string>
     <string name="empty_local_music">Không tìm thấy bài hát nào trong máy.\nHãy chép nhạc vào thư mục Music hoặc Download.</string>
     <string name="empty_favorites">Chưa có bài hát yêu thích nào.</string>
-    <string name="empty_online_music">Đang tải danh sách nhạc online...</string>
+    <string name="empty_online_music">Không tìm thấy bài hát nào trên mạng.\nHãy thử tìm với tên bài hát hoặc ca sĩ khác.</string>
 
     <string name="permission_required_title">Cấp quyền truy cập bộ nhớ</string>
     <string name="permission_required_desc">Ứng dụng cần quyền đọc bộ nhớ để quét các bài hát có sẵn trên điện thoại của bạn.</string>

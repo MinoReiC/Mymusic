@@ -46,7 +46,7 @@ class OnlineFragment : Fragment() {
         observeData()
 
         if (viewModel.onlineSongs.value.isEmpty()) {
-            viewModel.loadOnlineSongs()
+            viewModel.searchOnline()
         }
     }
 
@@ -71,11 +71,11 @@ class OnlineFragment : Fragment() {
 
     private fun setupListeners() {
         binding.swipeRefreshOnline.setOnRefreshListener {
-            viewModel.loadOnlineSongs()
+            viewModel.searchOnline(viewModel.searchQuery.value)
         }
 
         binding.btnRetryOnline.setOnClickListener {
-            viewModel.loadOnlineSongs()
+            viewModel.searchOnline(viewModel.searchQuery.value)
         }
     }
 
@@ -88,7 +88,7 @@ class OnlineFragment : Fragment() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.filteredOnlineSongs.collectLatest { songs ->
+            viewModel.onlineSongs.collectLatest { songs ->
                 songAdapter.submitList(songs)
                 if (songs.isEmpty() && !viewModel.isLoadingOnline.value) {
                     binding.layoutErrorOnline.visibility = View.VISIBLE
